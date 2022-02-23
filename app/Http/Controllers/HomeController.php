@@ -21,8 +21,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    // public function index()
+    // {
+    //     return view('home');
+    // }
+
+    public function __invoke(Request $request)
     {
-        return view('home');
+        return redirect('/admin');
     }
 }
