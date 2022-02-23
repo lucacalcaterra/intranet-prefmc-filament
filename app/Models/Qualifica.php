@@ -10,4 +10,6 @@ class Qualifica extends Model
     use HasFactory;
     protected $table = 'qualifiche';
 
+    protected $fillable=['nome'];
+
 }
