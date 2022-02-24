@@ -19,6 +19,8 @@ class QualificaResource extends Resource
 
     protected static ?string $pluralLabel = 'qualifiche';
 
+    protected static ?string $slug = 'qualifiche';
+
     public static function form(Form $form): Form
     {
         return $form
