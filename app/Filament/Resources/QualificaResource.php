@@ -35,15 +35,16 @@ class QualificaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('nome')->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->label('Creato il')
+                    ->dateTime('d-m-Y H:i:s'),
+                Tables\Columns\TextColumn::make('updated_at')->label('Modificato il')
+                    ->dateTime('d-m-Y H:i:s'),
             ])
             ->filters([
                 //
-            ]);
+            ])
+            ->defaultSort('nome');
     }
 
     public static function getRelations(): array

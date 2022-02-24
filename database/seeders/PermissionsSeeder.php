@@ -38,7 +38,7 @@ class PermissionsSeeder extends Seeder
         }
 
         $roles = [
-            'Super Admin',
+            'super-admin',
             'dirigente',
             'dipendente',
         ];
