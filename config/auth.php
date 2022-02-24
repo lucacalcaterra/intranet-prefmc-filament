@@ -70,10 +70,13 @@ return [
             'rules' => [],
             'database' => [
                 'model' => App\Models\User::class,
-                'sync_passwords' => false,
+                'sync_passwords' => true,
                 'sync_attributes' => [
                     'name' => 'cn',
                     'username' => 'samaccountname',
+                ],
+                'sync_existing' => [
+                'username' => 'samaccountname'
                 ],
             ],
         ],
