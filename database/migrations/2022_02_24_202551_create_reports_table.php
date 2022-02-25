@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->date('data');
-            $table->text('testoreport');
+            $table->text('testo');
             $table->unique(['user_id', 'data']);
             $table->enum('stato',  ['INSERITO', 'INVIATO'])->default('INSERITO');
 

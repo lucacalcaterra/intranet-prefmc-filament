@@ -21,6 +21,8 @@ class QualificaResource extends Resource
 
     protected static ?string $slug = 'qualifiche';
 
+    protected static ?string $navigationGroup = 'Amministrazione';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -11,6 +11,8 @@ class Report extends Model
 
     protected $table = 'reports';
 
+    protected $fillable = ['user_id','data','testo'];
+
 
     /*
     |--------------------------------------------------------------------------

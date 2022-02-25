@@ -21,6 +21,8 @@ class UfficioResource extends Resource
 
     protected static ?string $slug = 'uffici';
 
+    protected static ?string $navigationGroup = 'Amministrazione';
+
     public static function form(Form $form): Form
     {
         return $form

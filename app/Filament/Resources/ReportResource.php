@@ -11,6 +11,9 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 
+use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\Auth;
+
 class ReportResource extends Resource
 {
     protected static ?string $model = Report::class;
@@ -20,7 +23,19 @@ class ReportResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([Forms\Components\DatePicker::make('data')->required(),
+
+            ->schema([
+                Forms\Components\Card::make()->columns(1)->schema([
+                    Forms\Components\Hidden::make('user_id')->default(Auth::user()->id),
+                    Forms\Components\DatePicker::make('data')->required()->displayFormat('d-m-Y')->default(now())
+                        ->unique(callback: function (Unique $rule) {
+                            // x constraint check -  verifica che non ci sia già un  report per coppia (stesso utente e data)
+                            return $rule
+                                ->where('user_id', Auth::user()->id)
+                                ->where('data', date('y-m-d'));
+                        }),
+                    Forms\Components\Textarea::make('testo')->required()->rows(50)->cols(150),
+                ])
 
             ]);
     }
@@ -29,12 +44,12 @@ class ReportResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome')->sortable(),
+                //Tables\Columns\TextColumn::make('nome')->sortable(),
                 Tables\Columns\TextColumn::make('data')->sortable()->date(),
                 Tables\Columns\TextColumn::make('created_at')->label('Creato il')
-                ->dateTime('d-m-Y H:i:s'),
+                    ->dateTime('d-m-Y H:i:s'),
                 Tables\Columns\TextColumn::make('updated_at')->label('Modificato il')
-                ->dateTime('d-m-Y H:i:s'),
+                    ->dateTime('d-m-Y H:i:s'),
             ])
             ->filters([
                 //
