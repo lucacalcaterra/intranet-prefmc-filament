@@ -44,7 +44,7 @@ class ReportResource extends Resource
     {
         return $table
             ->columns([
-                //Tables\Columns\TextColumn::make('nome')->sortable(),
+                Tables\Columns\TextColumn::make('user_id')->sortable(),
                 Tables\Columns\TextColumn::make('data')->sortable()->date(),
                 Tables\Columns\TextColumn::make('created_at')->label('Creato il')
                     ->dateTime('d-m-Y H:i:s'),
