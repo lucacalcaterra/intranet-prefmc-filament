@@ -50,6 +50,10 @@ class LoginController extends Controller
         return [
             'samaccountname' => $request->username,
             'password' => $request->password,
+            'fallback' => [
+                'username' => $request->username,
+                'password' => $request->password,
+            ],
         ];
     }
 }

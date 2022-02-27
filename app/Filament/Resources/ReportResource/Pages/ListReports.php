@@ -14,6 +14,7 @@ class ListReports extends ListRecords
 
     protected function getTableQuery(): Builder
     {
+        // solo i records dell'utente loggato
         return static::getResource()::getEloquentQuery()->where('user_id', Auth::user()->id);
     }
 
