@@ -4,15 +4,19 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReportResource\Pages;
 use App\Filament\Resources\ReportResource\RelationManagers;
+
 use App\Models\Report;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\LinkAction;
 
 use Illuminate\Validation\Rules\Unique;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class ReportResource extends Resource
 {
@@ -34,7 +38,10 @@ class ReportResource extends Resource
                                 ->where('user_id', Auth::user()->id)
                                 ->where('data', date('y-m-d'));
                         }),
-                    Forms\Components\Textarea::make('testo')->required()->rows(50)->cols(150),
+                    Forms\Components\RichEditor::make('testo')->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                    ])->required(),
                 ])
 
             ]);
@@ -44,17 +51,40 @@ class ReportResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')->sortable(),
-                Tables\Columns\TextColumn::make('data')->sortable()->date(),
+                // Tables\Columns\TextColumn::make('user_id')->sortable(),
+                Tables\Columns\TextColumn::make('data')->sortable()->date()->dateTime('d-m-Y'),
                 Tables\Columns\TextColumn::make('created_at')->label('Creato il')
                     ->dateTime('d-m-Y H:i:s'),
                 Tables\Columns\TextColumn::make('updated_at')->label('Modificato il')
                     ->dateTime('d-m-Y H:i:s'),
+                Tables\Columns\BadgeColumn::make('stato')
+                    ->colors([
+                        'primary',
+                        'warning' => 'INSERITO',
+                        'success' => 'INVIATO',
+                        //'published' => 'Published',
+                    ])
+
+                // // VALIDA Report
+                // ->action(function (Report $record) {
+                //     dd("ciao");
+                //     $record->stato = "INVIATO";
+                //     $record->save();
+                // })
             ])
             ->filters([
                 //
             ])
-            ->defaultSort('nome');
+            ->actions([
+                // LinkAction::make('a')
+                //     // VALIDA Report
+                //     ->action(function (Report $record) {
+                //         $record->stato = "INVIATO";
+                //         $record->save();
+                //     })
+                //     ->requiresConfirmation()
+            ])
+            ->defaultSort('data', 'desc');
     }
 
     public static function getRelations(): array
