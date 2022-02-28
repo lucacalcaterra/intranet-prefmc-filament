@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('uffici', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->$table->timestamps();
+            $table->timestamps();
         });
     }
 
