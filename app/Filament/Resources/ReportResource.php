@@ -11,11 +11,9 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Actions\LinkAction;
 
 use Illuminate\Validation\Rules\Unique;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Collection;
 
 
 class ReportResource extends Resource
@@ -52,10 +50,10 @@ class ReportResource extends Resource
         return $table
             ->columns([
                 // Tables\Columns\TextColumn::make('user_id')->sortable(),
-                Tables\Columns\TextColumn::make('data')->sortable()->date()->dateTime('d-m-Y'),
+                Tables\Columns\TextColumn::make('data')->sortable()->date()->dateTime('d-m-Y (D)'),
                 Tables\Columns\TextColumn::make('created_at')->label('Creato il')
                     ->dateTime('d-m-Y H:i:s'),
-                Tables\Columns\TextColumn::make('updated_at')->label('Modificato il')
+                Tables\Columns\TextColumn::make('updated_at')->label('Ultima Modifica il')
                     ->dateTime('d-m-Y H:i:s'),
                 Tables\Columns\BadgeColumn::make('stato')
                     ->colors([
@@ -75,15 +73,9 @@ class ReportResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                // LinkAction::make('a')
-                //     // VALIDA Report
-                //     ->action(function (Report $record) {
-                //         $record->stato = "INVIATO";
-                //         $record->save();
-                //     })
-                //     ->requiresConfirmation()
-            ])
+            ->actions(
+                array_merge($table->getActions(), [])
+            )
             ->defaultSort('data', 'desc');
     }
 
