@@ -60,15 +60,7 @@ class ReportResource extends Resource
                         'primary',
                         'warning' => 'INSERITO',
                         'success' => 'INVIATO',
-                        //'published' => 'Published',
                     ])
-
-                // // VALIDA Report
-                // ->action(function (Report $record) {
-                //     dd("ciao");
-                //     $record->stato = "INVIATO";
-                //     $record->save();
-                // })
             ])
             ->filters([
                 //
