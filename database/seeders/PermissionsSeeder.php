@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\PermissionRegistrar;
+
+use App\Models\Permission;
+use App\Models\Role;
+
+use Laratrust\Checkers\Role\LaratrustRoleDefaultChecker;
 
 
 
@@ -19,18 +21,11 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        // Reset cached roles and permissions
-        app()[PermissionRegistrar::class]->forgetCachedPermissions();
-
         $permissions = [
-            'role-list',
-            'role-create',
-            'role-edit',
-            'role-delete',
-            'qualifica-list',
-            'qualifica-create',
-            'qualifica-edit',
-            'qualifica-delete'
+            'list-qualifica',
+            'create-qualifica',
+            'edit-qualifica',
+            'delete-qualifica'
         ];
 
         foreach ($permissions as $permission) {

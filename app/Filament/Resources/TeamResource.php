@@ -2,22 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Resources\TeamResource\Pages;
+use App\Filament\Resources\TeamResource\RelationManagers;
+use App\Models\Team;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 
-class UserResource extends Resource
+class TeamResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Team::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $navigationGroup = 'Autorizzazioni';
+
+    protected static ?string $navigationLabel = 'Teams (Aree)';
 
 
     public static function form(Form $form): Form
@@ -27,16 +29,9 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('username')
-                    ->required()
+                Forms\Components\TextInput::make('display_name')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('guid')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('domain')
+                Forms\Components\TextInput::make('description')
                     ->maxLength(255),
             ]);
     }
@@ -45,18 +40,14 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
-                // Tables\Columns\TextColumn::make('email_verified_at')->dateTime(),
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('display_name'),
+                Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
-                // Tables\Columns\TextColumn::make('guid'),
-                // Tables\Columns\TextColumn::make('domain'),
-
             ])
-            ->defaultSort('username')
             ->filters([
                 //
             ]);
@@ -72,9 +63,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListTeams::route('/'),
+            'create' => Pages\CreateTeam::route('/create'),
+            'edit' => Pages\EditTeam::route('/{record}/edit'),
         ];
     }
 }
