@@ -18,6 +18,7 @@ class TestController extends Controller
     {
         $user = User::find(1);
 
-        dump($user->roles()->sync([1, 2, 3]));
+        //dump($user->roles()->sync([1, 2, 3]));
+        dump(\App\Models\Role::all()->pluck('name', 'id'));
     }
 }

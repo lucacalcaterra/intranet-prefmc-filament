@@ -43,15 +43,7 @@ class RoleResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('display_name'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
-            ])
+            ->columns(static::getTableColumns())
             ->filters([
                 //
             ]);
@@ -70,6 +62,19 @@ class RoleResource extends Resource
             'index' => Pages\ListRoles::route('/'),
             'create' => Pages\CreateRole::route('/create'),
             'edit' => Pages\EditRole::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getTableColumns(): array
+    {
+        return [
+            Tables\Columns\TextColumn::make('name'),
+            Tables\Columns\TextColumn::make('display_name'),
+            Tables\Columns\TextColumn::make('description'),
+            Tables\Columns\TextColumn::make('created_at')
+                ->dateTime(),
+            Tables\Columns\TextColumn::make('updated_at')
+                ->dateTime(),
         ];
     }
 }
