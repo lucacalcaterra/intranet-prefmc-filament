@@ -76,7 +76,7 @@ return [
                     'username' => 'samaccountname',
                 ],
                 'sync_existing' => [
-                'username' => 'samaccountname'
+                    'username' => 'samaccountname'
                 ],
             ],
         ],

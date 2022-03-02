@@ -10,12 +10,14 @@ use Laravel\Sanctum\HasApiTokens;
 
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use LdapRecord\Laravel\Auth\HasLdapUser;
+
 use Laratrust\Traits\LaratrustUserTrait;
 
 
 class User extends Authenticatable implements LdapAuthenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticatesWithLdap, LaratrustUserTrait;
+    use HasApiTokens, HasFactory, Notifiable, AuthenticatesWithLdap, HasLdapUser, LaratrustUserTrait;
 
     protected $guard_name = "web";
 
