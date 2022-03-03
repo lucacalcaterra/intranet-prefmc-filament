@@ -34,7 +34,8 @@ class PermissionsRelationManager extends BelongsToManyRelationManager
     {
         return $form
             ->schema([
-                //
+                BelongsToManyCheckboxList::make('permissions')
+                    ->relationship('permissions', 'name')
             ]);
     }
 

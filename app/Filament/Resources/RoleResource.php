@@ -10,6 +10,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Forms\Components\BelongsToManyCheckboxList;
+
 
 class RoleResource extends Resource
 {
@@ -37,6 +39,8 @@ class RoleResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('description')
                     ->maxLength(255),
+                BelongsToManyCheckboxList::make('permissions')
+                    ->relationship('permissions', 'name')
             ]);
     }
 
@@ -52,7 +56,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\PermissionsRelationManager::class,
+            // RelationManagers\PermissionsRelationManager::class,
         ];
     }
 
