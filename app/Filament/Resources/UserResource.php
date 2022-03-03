@@ -20,6 +20,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationGroup = 'Autorizzazioni';
 
+    protected static ?string $pluralLabel = 'Utenti';
+
 
     public static function form(Form $form): Form
     {
@@ -27,18 +29,13 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('username')
                     ->required()
+                    ->disabled()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('guid')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('domain')
-                    ->maxLength(255),
+
             ]);
     }
 
@@ -48,7 +45,6 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
-                // Tables\Columns\TextColumn::make('email_verified_at')->dateTime(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

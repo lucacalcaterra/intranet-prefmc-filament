@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('profili', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('ufficio')->nullable();
+            // $table->string('ufficio')->nullable();
             $table->string('qualifica')->nullable();
 
             $table->timestamps();
