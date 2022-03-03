@@ -50,4 +50,14 @@ class User extends Authenticatable implements LdapAuthenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function qualifica()
+    {
+        return $this->belongsTo(Qualifica::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

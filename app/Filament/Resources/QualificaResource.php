@@ -27,7 +27,7 @@ class QualificaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nome')
+                Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -37,7 +37,7 @@ class QualificaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome')->sortable(),
+                Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->label('Creato il')
                     ->dateTime('d-m-Y H:i:s'),
                 Tables\Columns\TextColumn::make('updated_at')->label('Modificato il')
@@ -46,7 +46,7 @@ class QualificaResource extends Resource
             ->filters([
                 //
             ])
-            ->defaultSort('nome');
+            ->defaultSort('name');
     }
 
     public static function getRelations(): array

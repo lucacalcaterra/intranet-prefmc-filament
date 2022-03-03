@@ -7,7 +7,6 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
@@ -35,6 +34,13 @@ class UserResource extends Resource
                     ->required()
                     ->disabled()
                     ->maxLength(255),
+                Forms\Components\BelongsToSelect::make('teamId')
+                    ->label('Ufficio di Appartenenza')
+                    ->relationship('team', 'name')
+                    ->default(''),
+                Forms\Components\BelongsToSelect::make('qualificaId')
+                    ->relationship('qualifica', 'name')
+                    ->default('')
 
             ]);
     }
@@ -45,13 +51,13 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('qualifica.name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('team.name')->label('Ufficio')->sortable()->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
-                // Tables\Columns\TextColumn::make('guid'),
-                // Tables\Columns\TextColumn::make('domain'),
-
             ])
             ->defaultSort('username')
             ->filters([

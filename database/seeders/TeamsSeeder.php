@@ -21,8 +21,10 @@ class TeamsSeeder extends Seeder
             'Area 1',
             'Area 2',
             'Area 3',
-            'Gabinetto',
-            'Vicario',
+            'Area 4',
+            'Uff. di Gabinetto',
+            'Uff. Ragioneria',
+            'Uff. del Vicario',
         ];
 
         foreach ($aree as $area) {

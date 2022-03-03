@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('qualifiche', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
     }

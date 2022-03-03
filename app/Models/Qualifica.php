@@ -11,6 +11,11 @@ class Qualifica extends Model
 
     protected $table = 'qualifiche';
 
-    protected $fillable=['nome'];
+    protected $fillable = ['nome'];
 
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

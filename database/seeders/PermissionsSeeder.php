@@ -22,10 +22,11 @@ class PermissionsSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'list-qualifica',
-            'create-qualifica',
-            'edit-qualifica',
-            'delete-qualifica'
+            'report.list',
+            'report.create',
+            'report.edit',
+            'report.delete',
+            'report.validate'
         ];
 
         foreach ($permissions as $permission) {

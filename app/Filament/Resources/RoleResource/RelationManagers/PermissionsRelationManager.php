@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\RelationManagers;
+namespace App\Filament\Resources\RoleResource\RelationManagers;
 
-use App\Filament\Resources\RoleResource;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 use Filament\Resources\Table;
-use Illuminate\Database\Eloquent\Model;
+use App\Filament\Resources\RoleResource;
+use Filament\Forms\Components\BelongsToManyCheckboxList;
 
-class RolesRelationManager extends BelongsToManyRelationManager
+class PermissionsRelationManager extends BelongsToManyRelationManager
 {
-    protected static string $relationship = 'roles';
+    protected static string $relationship = 'permissions';
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $pluralLabel = 'ruoli';
+    protected static ?string $pluralLabel = 'permessi';
 
 
     // disabilita la creazione e la modifica dei ruoli all'interno dal form utente
@@ -24,28 +24,26 @@ class RolesRelationManager extends BelongsToManyRelationManager
         return false;
     }
 
-    protected function canDelete(Model $record): bool
-    {
-        return false;
-    }
 
     protected function canDeleteAny(): bool
     {
         return false;
     }
 
-    protected function canEdit(Model $record): bool
+    public static function form(Form $form): Form
     {
-        return false;
+        return $form
+            ->schema([
+                //
+            ]);
     }
-
-
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns(
                 RoleResource::getTableColumns()
+
             )
             ->filters([
                 //
@@ -58,8 +56,8 @@ class RolesRelationManager extends BelongsToManyRelationManager
             ->schema([
                 // static::getAttachFormRecordSelect(),
                 Forms\Components\Select::make('recordId')
-                    ->label('Ruolo')
-                    ->options(\App\Models\Role::all()->pluck('name', 'id'))
+                    ->label('Permesso')
+                    ->options(\App\Models\Permission::all()->pluck('name', 'id'))
                     ->searchable()
             ]);
     }

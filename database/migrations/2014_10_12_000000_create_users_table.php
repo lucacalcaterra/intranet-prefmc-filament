@@ -21,6 +21,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             //$table->enum('role',  ['utente', 'dirigente', 'admin'])->default('utente');
+            $table->integer('qualifica_id')->unsigned()->nullable()->references('id')->on('qualifiche')->oneDelete('cascade');
+            $table->integer('team_id')->unsigned()->nullable()->references('id')->on('teams')->oneDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

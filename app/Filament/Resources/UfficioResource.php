@@ -27,7 +27,7 @@ class UfficioResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nome')
+                Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -37,7 +37,7 @@ class UfficioResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome'),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
