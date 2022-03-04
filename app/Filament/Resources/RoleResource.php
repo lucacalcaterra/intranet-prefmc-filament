@@ -10,7 +10,7 @@ use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use App\Filament\Resources\RoleResource\Pages;
 use Filament\Forms\Components\BelongsToManyCheckboxList;
-
+use Filament\Forms\Components\BelongsToSelect;
 
 class RoleResource extends Resource
 {
@@ -73,6 +73,7 @@ class RoleResource extends Resource
         return [
             Tables\Columns\TextColumn::make('name'),
             Tables\Columns\TextColumn::make('display_name'),
+
             Tables\Columns\TextColumn::make('description'),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime(),

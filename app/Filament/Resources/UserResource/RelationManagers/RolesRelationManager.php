@@ -5,8 +5,10 @@ namespace App\Filament\Resources\UserResource\RelationManagers;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use App\Filament\Resources\RoleResource;
+use Filament\Forms\Components\BelongsToManyCheckboxList;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class RolesRelationManager extends BelongsToManyRelationManager
@@ -21,7 +23,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
     // disabilita la creazione e la modifica dei ruoli all'interno dal form utente
     protected function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     protected function canDelete(Model $record): bool
@@ -52,6 +54,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
             ]);
     }
 
+
     public static function attachForm(Form $form): Form
     {
         return $form
@@ -60,7 +63,12 @@ class RolesRelationManager extends BelongsToManyRelationManager
                 Forms\Components\Select::make('recordId')
                     ->label('Ruolo')
                     ->options(\App\Models\Role::all()->pluck('name', 'id'))
-                    ->searchable()
+                    ->searchable(),
+                Forms\Components\Select::make('teamId')
+                    ->label('Ruolo')
+                    ->options(\App\Models\Team::all()->pluck('name', 'id'))
+                    ->searchable(),
+
             ]);
     }
 }

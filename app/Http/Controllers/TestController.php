@@ -18,7 +18,9 @@ class TestController extends Controller
     {
         $user = User::find(1);
 
+        dd($user->roles);
+
         //dump($user->roles()->sync([1, 2, 3]));
-        dd($user->qualifica);
+        //dd($user->teams);
     }
 }

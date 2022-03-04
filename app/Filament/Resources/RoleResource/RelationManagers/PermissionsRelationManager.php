@@ -50,16 +50,4 @@ class PermissionsRelationManager extends BelongsToManyRelationManager
                 //
             ]);
     }
-
-    public static function attachForm(Form $form): Form
-    {
-        return $form
-            ->schema([
-                // static::getAttachFormRecordSelect(),
-                Forms\Components\Select::make('recordId')
-                    ->label('Permesso')
-                    ->options(\App\Models\Permission::all()->pluck('name', 'id'))
-                    ->searchable()
-            ]);
-    }
 }

@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.2.0.
+ * Generated for Laravel 9.3.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4760,6 +4760,18 @@
                         $instance->extend($name, $resolver);
         }
                     /**
+         * Remove an extension connection resolver.
+         *
+         * @param string $name
+         * @return void 
+         * @static 
+         */ 
+        public static function forgetExtension($name)
+        {
+                        /** @var \Illuminate\Database\DatabaseManager $instance */
+                        $instance->forgetExtension($name);
+        }
+                    /**
          * Return all of the created connections.
          *
          * @return array 
@@ -8539,6 +8551,19 @@
                         $instance->assertNothingSent();
         }
                     /**
+         * Assert that no notifications were sent to the given notifiable.
+         *
+         * @param mixed $notifiable
+         * @return void 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function assertNothingSentTo($notifiable)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+                        $instance->assertNothingSentTo($notifiable);
+        }
+                    /**
          * Assert the total amount of times a notification was sent.
          *
          * @param string $notification
@@ -8995,7 +9020,7 @@
                     /**
          * Push a new job onto the queue.
          *
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -9024,7 +9049,7 @@
          * Push a new job onto the queue after (n) seconds.
          *
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -9039,7 +9064,7 @@
          * Push a new job onto the queue.
          *
          * @param string $queue
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -9054,7 +9079,7 @@
          *
          * @param string $queue
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -17976,6 +18001,33 @@ namespace  {
             }
              
                 /**
+             * Add a "where not" clause to the query.
+             *
+             * @param \Closure $callback
+             * @param string $boolean
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function whereNot($callback, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->whereNot($callback, $boolean);
+            }
+             
+                /**
+             * Add an "or where not" clause to the query.
+             *
+             * @param \Closure $callback
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereNot($callback)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->orWhereNot($callback);
+            }
+             
+                /**
              * Add an "order by" clause for a timestamp to the query.
              *
              * @param string|\Illuminate\Database\Query\Expression $column
@@ -18758,7 +18810,7 @@ namespace  {
              *
              * @template TWhenParameter
              * @template TWhenReturnType
-             * @param \Illuminate\Database\Eloquent\(callable($this):  TWhenParameter)|TWhenParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter  $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TWhenReturnType 
@@ -18775,7 +18827,7 @@ namespace  {
              *
              * @template TUnlessParameter
              * @template TUnlessReturnType
-             * @param \Illuminate\Database\Eloquent\(callable($this):  TUnlessParameter)|TUnlessParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter  $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TUnlessReturnType 

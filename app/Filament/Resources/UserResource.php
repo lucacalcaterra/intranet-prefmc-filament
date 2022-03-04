@@ -36,7 +36,7 @@ class UserResource extends Resource
                     ->maxLength(255),
                 Forms\Components\BelongsToSelect::make('teamId')
                     ->label('Ufficio di Appartenenza')
-                    ->relationship('team', 'name')
+                    ->relationship('area', 'name')
                     ->default(''),
                 Forms\Components\BelongsToSelect::make('qualificaId')
                     ->relationship('qualifica', 'name')
@@ -52,7 +52,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('qualifica.name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('team.name')->label('Ufficio')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('area.name')->label('Ufficio')->sortable()->searchable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
