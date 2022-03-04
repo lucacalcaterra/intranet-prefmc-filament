@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
-use App\Filament\Resources\RoleResource;
 use Filament\Forms;
 use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 use Filament\Resources\Table;
 use Illuminate\Database\Eloquent\Model;
+use App\Filament\Resources\RoleResource;
+use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class RolesRelationManager extends BelongsToManyRelationManager
 {

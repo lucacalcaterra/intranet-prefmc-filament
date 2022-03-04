@@ -4,10 +4,10 @@ namespace App\Filament\Resources\RoleResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 use Filament\Resources\Table;
 use App\Filament\Resources\RoleResource;
 use Filament\Forms\Components\BelongsToManyCheckboxList;
+use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class PermissionsRelationManager extends BelongsToManyRelationManager
 {

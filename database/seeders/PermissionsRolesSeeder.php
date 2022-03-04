@@ -12,7 +12,7 @@ use Laratrust\Checkers\Role\LaratrustRoleDefaultChecker;
 
 
 
-class PermissionsSeeder extends Seeder
+class PermissionsRolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
