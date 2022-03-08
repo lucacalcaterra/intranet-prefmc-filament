@@ -5,6 +5,7 @@ namespace App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource;
 use Filament\Pages\Actions\ButtonAction;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Forms\Components\BelongsToManyMultiSelect;
 
 class EditUser extends EditRecord
 {

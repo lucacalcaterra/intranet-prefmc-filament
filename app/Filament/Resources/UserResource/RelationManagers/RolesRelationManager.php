@@ -5,9 +5,9 @@ namespace App\Filament\Resources\UserResource\RelationManagers;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
-use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use App\Filament\Resources\RoleResource;
+use App\Filament\Resources\UserResource;
 use Filament\Forms\Components\BelongsToManyCheckboxList;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
@@ -45,9 +45,14 @@ class RolesRelationManager extends BelongsToManyRelationManager
 
     public static function table(Table $table): Table
     {
+
         return $table
             ->columns(
+
                 RoleResource::getTableColumns()
+                // [
+                //     \Filament\Tables\Columns\TextColumn::make('team.name'),
+                // ]
             )
             ->filters([
                 //

@@ -2,14 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use App\Models\User;
 use Filament\Tables;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use App\Filament\Resources\UserResource\Pages;
+use Filament\Forms\Components\BelongsToManyMultiSelect;
+use App\Filament\Resources\UserResource\RelationManagers;
 
 class UserResource extends Resource
 {
@@ -40,7 +41,15 @@ class UserResource extends Resource
                     ->default(''),
                 Forms\Components\BelongsToSelect::make('qualificaId')
                     ->relationship('qualifica', 'name')
-                    ->default('')
+                    ->default(''),
+
+                Forms\Components\BelongsToManyCheckboxList::make('roles')
+                    ->relationship('roles', 'name')
+                    ->required(),
+                Forms\Components\BelongsToManyCheckboxList::make('team')->required()
+                    ->relationship('rolesTeams', 'name')
+                    ->required(),
+
 
             ]);
     }
