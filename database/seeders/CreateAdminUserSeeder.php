@@ -24,7 +24,7 @@ class CreateAdminUserSeeder extends Seeder
                 'username' => 'dpp1060688',
                 'password' => bcrypt('')
             ]);
-            $user->syncRoles(['super-admin']);
+            $user->syncRoles(['superadministrator']);
         }
     }
 }

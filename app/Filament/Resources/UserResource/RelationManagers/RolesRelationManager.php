@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
+use App\Models\Team;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Illuminate\Database\Eloquent\Model;
@@ -49,10 +50,12 @@ class RolesRelationManager extends BelongsToManyRelationManager
         return $table
             ->columns(
 
-                RoleResource::getTableColumns()
-                // [
-                //     \Filament\Tables\Columns\TextColumn::make('team.name'),
-                // ]
+                //RoleResource::getTableColumns()
+                [
+                    \Filament\Tables\Columns\TextColumn::make('name'),
+                    \Filament\Tables\Columns\TextColumn::make('team')
+                        ->getStateUsing(fn ($record): ?string => (Team::find($record->team_id)?->name ?? null)),
+                ]
             )
             ->filters([
                 //
@@ -69,7 +72,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
                     ->label('Ruolo')
                     ->options(\App\Models\Role::all()->pluck('name', 'id'))
                     ->searchable(),
-                Forms\Components\Select::make('teamId')
+                Forms\Components\Select::make('team_id')
                     ->label('Ruolo')
                     ->options(\App\Models\Team::all()->pluck('name', 'id'))
                     ->searchable(),

@@ -57,7 +57,7 @@ class User extends Authenticatable implements LdapAuthenticatable
 
     public function area()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     // public function roles()

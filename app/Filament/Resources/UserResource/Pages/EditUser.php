@@ -12,18 +12,18 @@ class EditUser extends EditRecord
     protected static string $resource = UserResource::class;
 
 
-    protected function getFormActions(): array
-    {
-        // pulsante per validazione finale
-        return ([
-            ButtonAction::make('Salva & Chiudi')->action('saveAndClose'),
-        ]);
-    }
+    // protected function getFormActions(): array
+    // {
+    //     // pulsante per validazione finale
+    //     return ([
+    //         ButtonAction::make('Salva & Chiudi')->action('saveAndClose'),
+    //     ]);
+    // }
 
-    public function saveAndClose(): void
-    {
-        $this->record->save();
-        $this->notify('success', 'Salvato', isAfterRedirect: true);
-        redirect()->to(route('filament.resources.users.index'));
-    }
+    // public function saveAndClose(): void
+    // {
+    //     $this->record->save();
+    //     $this->notify('success', 'Salvato', isAfterRedirect: true);
+    //     redirect()->to(route('filament.resources.users.index'));
+    // }
 }

@@ -34,10 +34,10 @@ class RoleResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('display_name')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('display_name')
+                //     ->maxLength(255),
+                // Forms\Components\TextInput::make('description')
+                //     ->maxLength(255),
                 BelongsToManyCheckboxList::make('permissions')
                     ->relationship('permissions', 'name')
             ]);
@@ -72,9 +72,9 @@ class RoleResource extends Resource
     {
         return [
             Tables\Columns\TextColumn::make('name'),
-            Tables\Columns\TextColumn::make('display_name'),
+            // Tables\Columns\TextColumn::make('display_name'),
 
-            Tables\Columns\TextColumn::make('description'),
+            // Tables\Columns\TextColumn::make('description'),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime(),
             Tables\Columns\TextColumn::make('updated_at')

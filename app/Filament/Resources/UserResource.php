@@ -9,6 +9,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use App\Filament\Resources\UserResource\Pages;
+use Filament\Forms\Components\HasManyRepeater;
+use Filament\Forms\Components\MorphManyRepeater;
 use Filament\Forms\Components\BelongsToManyMultiSelect;
 use App\Filament\Resources\UserResource\RelationManagers;
 
@@ -35,22 +37,13 @@ class UserResource extends Resource
                     ->required()
                     ->disabled()
                     ->maxLength(255),
-                Forms\Components\BelongsToSelect::make('teamId')
+                Forms\Components\BelongsToSelect::make('team_d')
                     ->label('Ufficio di Appartenenza')
                     ->relationship('area', 'name')
                     ->default(''),
                 Forms\Components\BelongsToSelect::make('qualificaId')
                     ->relationship('qualifica', 'name')
                     ->default(''),
-
-                Forms\Components\BelongsToManyCheckboxList::make('roles')
-                    ->relationship('roles', 'name')
-                    ->required(),
-                Forms\Components\BelongsToManyCheckboxList::make('team')->required()
-                    ->relationship('rolesTeams', 'name')
-                    ->required(),
-
-
             ]);
     }
 
@@ -61,7 +54,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('qualifica.name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('area.name')->label('Ufficio')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('area.name')->label('Area')->sortable()->searchable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
