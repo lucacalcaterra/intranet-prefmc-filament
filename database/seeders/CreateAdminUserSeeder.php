@@ -22,7 +22,7 @@ class CreateAdminUserSeeder extends Seeder
             $user = User::create([
                 'name' => 'Luca Calcaterra',
                 'username' => 'dpp1060688',
-                'password' => bcrypt('')
+                'password' => bcrypt('Password.2022')
             ]);
             $user->syncRoles(['superadministrator']);
         }
