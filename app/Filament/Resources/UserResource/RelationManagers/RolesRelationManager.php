@@ -29,7 +29,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
     // disabilita la creazione e la modifica dei ruoli all'interno dal form utente
     protected function canCreate(): bool
     {
-        return true;
+        return false;
     }
 
     protected function canDelete(Model $record): bool
