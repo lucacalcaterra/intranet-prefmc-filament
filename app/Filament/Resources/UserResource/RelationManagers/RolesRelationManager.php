@@ -17,11 +17,15 @@ use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class RolesRelationManager extends BelongsToManyRelationManager
 {
+    use Forms\Concerns\InteractsWithForms;
+
     protected static string $relationship = 'roles';
 
     protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $pluralLabel = 'ruoli';
+
+    public Role $role;
 
 
 
@@ -70,6 +74,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
 
     public static function attachForm(Form $form): Form
     {
+
         return $form
             ->schema([
                 // static::getAttachFormRecordSelect(),
@@ -83,6 +88,8 @@ class RolesRelationManager extends BelongsToManyRelationManager
                     ->label('Ruolo')
                     ->options(function (callable $get) {
                         // rimuove dalla scelta i ruoli già assegnati
+                        dd(getRecord());
+
                         return DB::table('roles')
                             ->select('id', 'name')
                             ->whereNotIn('id', DB::table('role_user')->select('role_id')->where('team_id', '=', 1)->where('user_id', '=', 1))->pluck('name', 'id');
