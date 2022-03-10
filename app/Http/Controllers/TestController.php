@@ -31,7 +31,7 @@ class TestController extends Controller
         //(SELECT role_id FROM role_user	WHERE team_id=1 AND user_id=1)
 
 
-        dd($result);
+        ($result->pluck('name', 'id'));
 
         //dump($user->roles()->sync([1, 2, 3]));
         //dd($user->teams);

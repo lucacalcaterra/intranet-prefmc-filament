@@ -2,15 +2,16 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
+use Debugbar;
 use Filament\Forms;
 use App\Models\Role;
 use App\Models\Team;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Filament\Resources\RoleResource;
 use App\Filament\Resources\UserResource;
-use Debugbar;
 use Filament\Forms\Components\BelongsToManyCheckboxList;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
@@ -81,15 +82,11 @@ class RolesRelationManager extends BelongsToManyRelationManager
                 Forms\Components\Select::make('recordId')
                     ->label('Ruolo')
                     ->options(function (callable $get) {
-
-                        $role = Role::all();
-
-                        Debugbar::info($role);
-
-                        return Role::all()->pluck('name', 'id');
+                        // rimuove dalla scelta i ruoli già assegnati
+                        return DB::table('roles')
+                            ->select('id', 'name')
+                            ->whereNotIn('id', DB::table('role_user')->select('role_id')->where('team_id', '=', 1)->where('user_id', '=', 1))->pluck('name', 'id');
                     }),
-
-
             ]);
     }
 }
