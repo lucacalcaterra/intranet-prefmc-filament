@@ -2,17 +2,14 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
-use Debugbar;
+
 use Filament\Forms;
-use App\Models\Role;
 use App\Models\Team;
+use Livewire\Component;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Filament\Resources\RoleResource;
-use App\Filament\Resources\UserResource;
-use Filament\Forms\Components\BelongsToManyCheckboxList;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class RolesRelationManager extends BelongsToManyRelationManager
@@ -25,10 +22,7 @@ class RolesRelationManager extends BelongsToManyRelationManager
 
     protected static ?string $pluralLabel = 'ruoli';
 
-    public Role $role;
-
-
-
+    public ?Model $record = null;
 
     // disabilita la creazione e la modifica dei ruoli all'interno dal form utente
     protected function canCreate(): bool
@@ -86,13 +80,11 @@ class RolesRelationManager extends BelongsToManyRelationManager
 
                 Forms\Components\Select::make('recordId')
                     ->label('Ruolo')
-                    ->options(function (callable $get) {
+                    ->options(function (callable $get, Component $livewire) {
                         // rimuove dalla scelta i ruoli già assegnati
-                        dd(getRecord());
-
                         return DB::table('roles')
                             ->select('id', 'name')
-                            ->whereNotIn('id', DB::table('role_user')->select('role_id')->where('team_id', '=', 1)->where('user_id', '=', 1))->pluck('name', 'id');
+                            ->whereNotIn('id', DB::table('role_user')->select('role_id')->where('team_id', '=', $get('team_id'))->where('user_id', '=', $livewire->ownerRecord->id))->pluck('name', 'id');
                     }),
             ]);
     }
