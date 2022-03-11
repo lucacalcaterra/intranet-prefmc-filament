@@ -2,18 +2,29 @@
 
 namespace App\Observers;
 
+use Debugbar;
+use App\Models\Team;
 use App\Models\User;
 
 class UserObserver
 {
     /**
-     * Handle the User "created" event.
+     * Handle the User "updated" event.
      *
      * @param  \App\Models\User  $user
      * @return void
      */
-    public function created(User $user)
+    public function updated(User $user)
     {
-        $user->attachRole('dipendente');
+
+        // assegna ruolo di dipendente solo nell'area di appartenenza
+
+        if ($user?->team_id) {
+            $teams = Team::all();
+            foreach ($teams as $team) {
+                $user->detachRole('dipendente', $team->id);
+            }
+            $user->attachRole('dipendente', $user->team_id);
+        }
     }
 }
