@@ -24,6 +24,9 @@ class RolesRelationManager extends BelongsToManyRelationManager
 
     public ?Model $record = null;
 
+    protected $listeners = ['userUpdated'];
+
+
     // disabilita la creazione e la modifica dei ruoli all'interno dal form utente
     protected function canCreate(): bool
     {
@@ -87,5 +90,10 @@ class RolesRelationManager extends BelongsToManyRelationManager
                             ->whereNotIn('id', DB::table('role_user')->select('role_id')->where('team_id', '=', $get('team_id'))->where('user_id', '=', $livewire->ownerRecord->id))->pluck('name', 'id');
                     }),
             ]);
+    }
+
+    public function userUpdated()
+    {
+        $this->getTableRecords()->fresh();
     }
 }
