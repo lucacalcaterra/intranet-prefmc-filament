@@ -18,7 +18,7 @@ class QualificaPolicy
      */
     public function viewAny(User $user)
     {
-        return ($user->hasRole('super-admin'));
+        return ($user->hasRole('superadministrator'));
     }
 
     /**
