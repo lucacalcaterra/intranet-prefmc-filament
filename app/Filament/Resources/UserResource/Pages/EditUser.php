@@ -20,29 +20,9 @@ class EditUser extends EditRecord
 
     protected static  $rolesRel = RolesRelationManager::class;
 
-    // protected function getFormActions(): array
-    // {
-    //     return array_merge(parent::getFormActions(), [
-    //         ButtonAction::make('Salva e Chiudi')->action('saveAndClose'),
-    //     ]);
-    // }
-
-    // public function saveAndClose(?Model $record): void
-    // {
-    //     Debugbar::info('ciao');
-    //     $record->save();
-    //     $this->fillForm();
-    // }
 
     protected function afterSave(): void
     {
-
         $this->emit('userUpdated');
-
-
-        //dd($this);
-        //$rolesManager = $this->getRelationManagers()[0];
-
-        // dd($rolesManager->getResourceTable()->fresh());
     }
 }
