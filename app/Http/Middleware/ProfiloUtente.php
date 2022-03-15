@@ -7,7 +7,7 @@ use Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AccountInfoMiddleware
+class ProfiloUtente
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class AccountInfoMiddleware
     {
         if (/*\Request::path() !== 'info' && */(\Auth::User()->team_id === NULL || \Auth::User()->qualifica_id === NULL)) {
             // if (\Auth::User()->username) {
-            return \Redirect::to('info');
+            return redirect('/admin/profilo');
         }
 
         return $next($request);

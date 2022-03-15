@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
         Filament::serving(function () {
             Filament::registerUserMenuItems([
                 UserMenuItem::make()
-                    ->label('Settings')
-                    ->url(route('filament.resources.users.edit', 1))
+                    ->label('Profilo')
+                    ->url(route('filament.pages.profilo'))
                     ->icon('heroicon-s-cog'),
                 // ...
             ]);

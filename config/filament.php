@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AccountInfoMiddleware;
+use App\Http\Middleware\ProfiloUtente;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
