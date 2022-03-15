@@ -3,9 +3,11 @@
 namespace App\Filament\Pages;
 
 
+use Debugbar;
 use App\Models\User;
 use Filament\Pages\Page;
 use Filament\Forms\Components\Grid;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
@@ -27,7 +29,7 @@ class Profile extends Page implements HasForms
 
 
 
-    //public User $user;
+    public User $user;
 
     public $name;
 
@@ -46,21 +48,21 @@ class Profile extends Page implements HasForms
             'name' => auth()->user()->name,
             'email' => auth()->user()->email,
             'qualifica_id' => auth()->user()->qualifica->id ?? 0,
-            'team_id' => auth()->user()->area->id,
+            'team_id' => auth()->user()->area?->id,
 
         ]);
     }
 
-    // protected function getFormModel(): string
-    // {
-    //     return User::class;
-    // }
+    protected function getFormModel(): string
+    {
+        return User::class;
+    }
 
     // public function create(): void
     // {
-    //     $user = User::create($this->form->getState());
+    //     $this->user = User::create($this->form->getState());
 
-    //     $this->form->model($user)->saveRelationships();
+    //     $this->form->model($this->user)->saveRelationships();
     // }
 
     public function submit()
@@ -74,7 +76,11 @@ class Profile extends Page implements HasForms
             'qualifica_id' => $this->qualifica_id,
         ]);
 
-        auth()->user()->update($state);
+        Debugbar::info($state);
+
+        Debugbar::info(auth()->user());
+        $user = Auth::user();
+        $user->update($state);
 
         // $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
         $this->notify('success', 'Il tuo profilo è stato aggiornato.');
