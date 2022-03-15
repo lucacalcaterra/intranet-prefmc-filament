@@ -76,11 +76,7 @@ class Profile extends Page implements HasForms
             'qualifica_id' => $this->qualifica_id,
         ]);
 
-        Debugbar::info($state);
-
-        Debugbar::info(auth()->user());
-        $user = Auth::user();
-        $user->update($state);
+        auth()->user()->update($state);
 
         // $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
         $this->notify('success', 'Il tuo profilo è stato aggiornato.');
