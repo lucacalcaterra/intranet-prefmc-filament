@@ -3,6 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Debugbar;
+use Illuminate\Http\Request;
+use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Session;
 
 
 class ProfiloUtente
@@ -17,9 +21,11 @@ class ProfiloUtente
 
     public function handle($request, Closure $next)
     {
-        if (/*\Request::path() !== 'info' && */(\Auth::User()->team_id === NULL || \Auth::User()->qualifica_id === NULL)) {
-            // if (\Auth::User()->username) {
-            return redirect('/admin/profilo');
+        if ($request->route()->getName() !== 'filament.pages.profilo' && (\Auth::User()->team_id === NULL || \Auth::User()->qualifica_id === NULL)) {
+
+            Filament::notify('warning', 'Devi completare i dati del tuo profilo prima di proseguire!', isAfterRedirect: true);
+
+            return redirect()->to(route('filament.pages.profilo'));
         }
 
         return $next($request);

@@ -253,7 +253,7 @@ return [
     'middleware' => [
         'auth' => [
             Authenticate::class,
-            // ProfiloUtente::class,
+            ProfiloUtente::class,
         ],
         'base' => [
             EncryptCookies::class,

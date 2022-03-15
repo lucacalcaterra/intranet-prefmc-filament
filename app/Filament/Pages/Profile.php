@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
+use Illuminate\Support\Facades\Session;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -63,14 +64,6 @@ class Profile extends Page implements HasForms
         return User::class;
     }
 
-    // public function create(): void
-    // {
-    //     $this->user = User::create($this->form->getState());
-
-    //     $this->form->model($this->user)->saveRelationships();
-    // }
-
-
     public function submit()
     {
         $this->form->getState();
@@ -119,9 +112,11 @@ class Profile extends Page implements HasForms
                     BelongsToSelect::make('team_id')
                         ->label('Ufficio di Appartenenza')
                         ->relationship('area', 'name')
+                        ->required()
                         ->default(''),
                     BelongsToSelect::make('qualifica_id')
                         ->relationship('qualifica', 'name')
+                        ->required()
                         ->default(''),
                 ]),
 
