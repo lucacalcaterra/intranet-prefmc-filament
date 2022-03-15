@@ -27,6 +27,11 @@ class Profile extends Page implements HasForms
 
     protected static string $view = 'filament.pages.profile';
 
+    // protected static ?string $slug = '../profilo';
+
+
+    protected static string | array  $middlewares = ['web'];
+
 
 
     public User $user;
@@ -64,6 +69,7 @@ class Profile extends Page implements HasForms
 
     //     $this->form->model($this->user)->saveRelationships();
     // }
+
 
     public function submit()
     {

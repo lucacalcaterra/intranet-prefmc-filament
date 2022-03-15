@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Livewire\Profile;
+use App\Http\Middleware\ProfiloUtente;
 
 /*
 |--------------------------------------------------------------------------
