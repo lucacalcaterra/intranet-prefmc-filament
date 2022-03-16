@@ -519,16 +519,16 @@
         },
         {
             "name": "directorytree/ldaprecord",
-            "version": "v2.11.0",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DirectoryTree/LdapRecord.git",
-                "reference": "1ac0c94fa819c0de3176d886ce7cbf6f1cbc0252"
+                "reference": "56cf46e9b7714d66d2d4018afcb100684016f783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DirectoryTree/LdapRecord/zipball/1ac0c94fa819c0de3176d886ce7cbf6f1cbc0252",
-                "reference": "1ac0c94fa819c0de3176d886ce7cbf6f1cbc0252",
+                "url": "https://api.github.com/repos/DirectoryTree/LdapRecord/zipball/56cf46e9b7714d66d2d4018afcb100684016f783",
+                "reference": "56cf46e9b7714d66d2d4018afcb100684016f783",
                 "shasum": ""
             },
             "require": {
@@ -588,7 +588,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-08T14:16:44+00:00"
+            "time": "2022-03-15T11:34:58+00:00"
         },
         {
             "name": "directorytree/ldaprecord-laravel",
@@ -1299,16 +1299,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v2.10.27",
+            "version": "v2.10.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/admin.git",
-                "reference": "8ce0482114629ae797831b68fd5606752a2905aa"
+                "reference": "e053782265f922efb61c2bfd5b8546c3f98c674c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/8ce0482114629ae797831b68fd5606752a2905aa",
-                "reference": "8ce0482114629ae797831b68fd5606752a2905aa",
+                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/e053782265f922efb61c2bfd5b8546c3f98c674c",
+                "reference": "e053782265f922efb61c2bfd5b8546c3f98c674c",
                 "shasum": ""
             },
             "require": {
@@ -1355,20 +1355,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-03-13T13:04:10+00:00"
+            "time": "2022-03-15T21:16:08+00:00"
         },
         {
             "name": "filament/forms",
-            "version": "v2.10.27",
+            "version": "v2.10.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc"
+                "reference": "6c2fc517c16dcd3670b8ebd86386c3dac91b29d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/208b747075f83865f4628c41f6297e5fbe8d12fc",
-                "reference": "208b747075f83865f4628c41f6297e5fbe8d12fc",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/6c2fc517c16dcd3670b8ebd86386c3dac91b29d5",
+                "reference": "6c2fc517c16dcd3670b8ebd86386c3dac91b29d5",
                 "shasum": ""
             },
             "require": {
@@ -1411,27 +1411,28 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-03-13T13:04:09+00:00"
+            "time": "2022-03-16T09:35:28+00:00"
         },
         {
             "name": "filament/spatie-laravel-translatable-plugin",
-            "version": "v2.10.27",
+            "version": "v2.10.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/spatie-laravel-translatable-plugin.git",
-                "reference": "423316e3cb5a82eda8116b588bc1a14276515174"
+                "reference": "bff91d200b67146bbb0de96288224fc58965ebd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/spatie-laravel-translatable-plugin/zipball/423316e3cb5a82eda8116b588bc1a14276515174",
-                "reference": "423316e3cb5a82eda8116b588bc1a14276515174",
+                "url": "https://api.github.com/repos/laravel-filament/spatie-laravel-translatable-plugin/zipball/bff91d200b67146bbb0de96288224fc58965ebd3",
+                "reference": "bff91d200b67146bbb0de96288224fc58965ebd3",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "filament/filament": "self.version",
                 "illuminate/support": "^8.6|^9.0",
                 "php": "^8.0",
-                "spatie/laravel-translatable": "^5.0"
+                "spatie/laravel-translatable": "^5.0|^6.0"
             },
             "type": "library",
             "extra": {
@@ -1456,11 +1457,11 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-03-02T00:43:02+00:00"
+            "time": "2022-03-15T21:16:03+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.10.27",
+            "version": "v2.10.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
@@ -2098,16 +2099,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.4.1",
+            "version": "v9.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "29f0aaade82eadd20ef881b4efb88b0dad4e9a5b"
+                "reference": "35be2599c9ac3d58bf1578895c2e85ea4848a0d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/29f0aaade82eadd20ef881b4efb88b0dad4e9a5b",
-                "reference": "29f0aaade82eadd20ef881b4efb88b0dad4e9a5b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
+                "reference": "35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
                 "shasum": ""
             },
             "require": {
@@ -2273,7 +2274,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-03-08T16:17:00+00:00"
+            "time": "2022-03-15T14:41:19+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2400,16 +2401,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "5f2f9815b7631b9f586a3de7933c25f9327d4073"
+                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/5f2f9815b7631b9f586a3de7933c25f9327d4073",
-                "reference": "5f2f9815b7631b9f586a3de7933c25f9327d4073",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
+                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
                 "shasum": ""
             },
             "require": {
@@ -2462,9 +2463,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
-                "source": "https://github.com/laravel/tinker/tree/v2.7.0"
+                "source": "https://github.com/laravel/tinker/tree/v2.7.1"
             },
-            "time": "2022-01-10T08:52:49+00:00"
+            "time": "2022-03-15T15:25:01+00:00"
         },
         {
             "name": "laravel/ui",
@@ -4190,16 +4191,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.11.2",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "16a8de828e7f1f32d580c667e1de5bf2943abd6b"
+                "reference": "baeb3df0ebb3a541394fdaf8cbe6115bf4034a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/16a8de828e7f1f32d580c667e1de5bf2943abd6b",
-                "reference": "16a8de828e7f1f32d580c667e1de5bf2943abd6b",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/baeb3df0ebb3a541394fdaf8cbe6115bf4034a59",
+                "reference": "baeb3df0ebb3a541394fdaf8cbe6115bf4034a59",
                 "shasum": ""
             },
             "require": {
@@ -4237,7 +4238,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.11.2"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.11.3"
             },
             "funding": [
                 {
@@ -4245,31 +4246,31 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-22T08:55:13+00:00"
+            "time": "2022-03-15T20:01:36+00:00"
         },
         {
             "name": "spatie/laravel-translatable",
-            "version": "5.2.0",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-translatable.git",
-                "reference": "4567de39c483f7e43dddab9b8cb657796b139fd2"
+                "reference": "c4c2bef702738f26562b6dc37b66bdac545610e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/4567de39c483f7e43dddab9b8cb657796b139fd2",
-                "reference": "4567de39c483f7e43dddab9b8cb657796b139fd2",
+                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/c4c2bef702738f26562b6dc37b66bdac545610e1",
+                "reference": "c4c2bef702738f26562b6dc37b66bdac545610e1",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^8.0|^9.0",
-                "illuminate/support": "^8.0|^9.0",
+                "illuminate/database": "^9.0",
+                "illuminate/support": "^9.0",
                 "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.9"
+                "spatie/laravel-package-tools": "^1.11"
             },
             "require-dev": {
                 "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^6.23|^7.0"
+                "orchestra/testbench": "^7.0"
             },
             "type": "library",
             "extra": {
@@ -4277,6 +4278,9 @@
                     "providers": [
                         "Spatie\\Translatable\\TranslatableServiceProvider"
                     ]
+                },
+                "aliases": {
+                    "Translatable": "Spatie\\Translatable\\Facades\\Translatable"
                 }
             },
             "autoload": {
@@ -4300,11 +4304,6 @@
                     "email": "sebastian@spatie.be",
                     "homepage": "https://spatie.be",
                     "role": "Developer"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "theMohamedSaid@gmail.com",
-                    "role": "Original idea"
                 }
             ],
             "description": "A trait to make an Eloquent model hold translations",
@@ -4320,15 +4319,15 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-translatable/issues",
-                "source": "https://github.com/spatie/laravel-translatable/tree/5.2.0"
+                "source": "https://github.com/spatie/laravel-translatable/tree/6.0.0"
             },
             "funding": [
                 {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
+                    "url": "https://github.com/spatie",
+                    "type": "github"
                 }
             ],
-            "time": "2022-01-13T11:15:07+00:00"
+            "time": "2022-03-07T13:50:51+00:00"
         },
         {
             "name": "symfony/console",
@@ -7356,16 +7355,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.6",
+            "version": "v1.13.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "6205041336b09b965af1d6af29261584e787bf52"
+                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/6205041336b09b965af1d6af29261584e787bf52",
-                "reference": "6205041336b09b965af1d6af29261584e787bf52",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121",
                 "shasum": ""
             },
             "require": {
@@ -7412,7 +7411,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-03-07T15:35:47+00:00"
+            "time": "2022-03-11T14:11:15+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -8356,16 +8355,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.18",
+            "version": "9.5.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1b5856028273bfd855e60a887278857d872ec67a"
+                "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1b5856028273bfd855e60a887278857d872ec67a",
-                "reference": "1b5856028273bfd855e60a887278857d872ec67a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/35ea4b7f3acabb26f4bb640f8c30866c401da807",
+                "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807",
                 "shasum": ""
             },
             "require": {
@@ -8395,7 +8394,7 @@
                 "sebastian/global-state": "^5.0.1",
                 "sebastian/object-enumerator": "^4.0.3",
                 "sebastian/resource-operations": "^3.0.3",
-                "sebastian/type": "^2.3.4",
+                "sebastian/type": "^3.0",
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
@@ -8443,7 +8442,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.18"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.19"
             },
             "funding": [
                 {
@@ -8455,7 +8454,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-08T06:52:28+00:00"
+            "time": "2022-03-15T09:57:31+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9314,28 +9313,28 @@
         },
         {
             "name": "sebastian/type",
-            "version": "2.3.4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914"
+                "reference": "b233b84bc4465aff7b57cf1c4bc75c86d00d6dad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/b8cd8a1c753c90bc1a0f5372170e3e489136f914",
-                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/b233b84bc4465aff7b57cf1c4bc75c86d00d6dad",
+                "reference": "b233b84bc4465aff7b57cf1c4bc75c86d00d6dad",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.3"
+                "phpunit/phpunit": "^9.5"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -9358,7 +9357,7 @@
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
-                "source": "https://github.com/sebastianbergmann/type/tree/2.3.4"
+                "source": "https://github.com/sebastianbergmann/type/tree/3.0.0"
             },
             "funding": [
                 {
@@ -9366,7 +9365,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-15T12:49:02+00:00"
+            "time": "2022-03-15T09:54:48+00:00"
         },
         {
             "name": "sebastian/version",
