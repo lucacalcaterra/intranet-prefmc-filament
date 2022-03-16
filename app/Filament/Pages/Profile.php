@@ -3,15 +3,11 @@
 namespace App\Filament\Pages;
 
 
-use Debugbar;
 use App\Models\User;
 use Filament\Pages\Page;
-use Filament\Forms\Components\Grid;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
-use Illuminate\Support\Facades\Session;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -78,7 +74,8 @@ class Profile extends Page implements HasForms
         auth()->user()->update($state);
 
         // $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
-        $this->notify('success', 'Il tuo profilo è stato aggiornato.');
+        redirect()->intended();
+        $this->notify('success', 'Il tuo profilo è stato aggiornato.', isAfterRedirect: true);
     }
 
     public function getCancelButtonUrlProperty()

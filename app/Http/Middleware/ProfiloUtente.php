@@ -24,6 +24,7 @@ class ProfiloUtente
         if ($request->route()->getName() !== 'filament.pages.profilo' && (\Auth::User()->team_id === NULL || \Auth::User()->qualifica_id === NULL)) {
 
             Filament::notify('warning', 'Devi completare i dati del tuo profilo prima di proseguire!', isAfterRedirect: true);
+            session(['url.intended' => $request->route()->uri()]);
 
             return redirect()->to(route('filament.pages.profilo'));
         }
