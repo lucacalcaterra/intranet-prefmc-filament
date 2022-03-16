@@ -74,7 +74,7 @@ class Profile extends Page implements HasForms
         auth()->user()->update($state);
 
         // $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
-        redirect()->intended();
+        redirect()->intended(url()->previous());
         $this->notify('success', 'Il tuo profilo è stato aggiornato.', isAfterRedirect: true);
     }
 
@@ -103,7 +103,7 @@ class Profile extends Page implements HasForms
                         ->required(),
                 ]),
 
-            Section::make('Generale')
+            Section::make('Dati Ufficio')
                 ->columns(2)
                 ->schema([
                     BelongsToSelect::make('team_id')
