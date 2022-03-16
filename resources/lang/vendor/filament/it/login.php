@@ -4,12 +4,12 @@ return [
 
     'title' => 'Login',
 
-    'heading' => 'Sign in to your account',
+    'heading' => 'Accedi con il tuo account',
 
     'buttons' => [
 
         'submit' => [
-            'label' => 'Sign in',
+            'label' => 'Accedi',
         ],
 
     ],
@@ -18,6 +18,9 @@ return [
 
         'email' => [
             'label' => 'Indirizzo Email',
+        ],
+        'username' => [
+            'label' => 'Nome utente (dppxxxxxxx)',
         ],
 
         'password' => [
