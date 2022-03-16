@@ -78,7 +78,7 @@ return [
                 ],
                 'sync_existing' => [
                     'username' => 'samaccountname',
-                    'email' => 'mail',
+                    //'email' => 'mail', //no altrimenti eccezione duplicato su id username
                 ],
             ],
         ],
