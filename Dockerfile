@@ -1,62 +1,32 @@
-FROM php:8.1.2-fpm
+FROM php:8.0-apache
 
-# Set working directory
-WORKDIR /var/www
-
-# Add docker php ext repo
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-
-# Install php extensions
-RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions  pdo_mysql zip exif pcntl gd memcached ldap intl
-
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpng-dev \
-    libjpeg62-turbo-dev \
+RUN apt-get update && apt-get install -y  \
     libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    unzip \
-    git \
-    curl \
-    lua-zlib-dev \
-    libmemcached-dev \
-    nginx
+    libjpeg-dev \
+    libpng-dev \
+    libwebp-dev \
+    libldap2-dev \
+    libldb-dev \
+    --no-install-recommends \
+    && docker-php-ext-enable opcache \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql -j$(nproc) gd \
+    && docker-php-ext-install ldap \
+    && apt-get autoclean -y \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install supervisor
-RUN apt-get install -y supervisor
+# Update apache conf to point to application public directory
+ENV APACHE_DOCUMENT_ROOT=/var/www/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Update uploads config
+RUN echo "file_uploads = On\n" \
+    "memory_limit = 1024M\n" \
+    "upload_max_filesize = 512M\n" \
+    "post_max_size = 512M\n" \
+    "max_execution_time = 1200\n" \
+    > /usr/local/etc/php/conf.d/uploads.ini
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Copy code to /var/www
-COPY --chown=www:www-data . /var/www
-
-# add root to www group
-RUN chmod -R ug+w /var/www/storage
-
-# Copy nginx/php/supervisor configs
-RUN cp docker/supervisor.conf /etc/supervisord.conf
-RUN cp docker/php.ini /usr/local/etc/php/conf.d/app.ini
-RUN cp docker/nginx.conf /etc/nginx/sites-enabled/default
-
-# PHP Error Log Files
-RUN mkdir /var/log/php
-RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
-
-# Deployment steps
-RUN composer install --optimize-autoloader --no-dev
-RUN chmod +x /var/www/docker/run.sh
-
-EXPOSE 80
-ENTRYPOINT ["/var/www/docker/run.sh"]
+# Enable headers module
+RUN a2enmod rewrite headers
