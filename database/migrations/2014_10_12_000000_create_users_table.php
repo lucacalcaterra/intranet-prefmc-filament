@@ -20,10 +20,14 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
             $table->integer('qualifica_id')->unsigned()->nullable()->references('id')->on('qualifiche')->oneDelete('cascade');
             $table->integer('team_id')->unsigned()->nullable()->references('id')->on('teams')->oneDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
+            // custom
+            $table->date('data_nascita')->nullable();
+            $table->char('sesso', 1)->nullable();
         });
     }
 

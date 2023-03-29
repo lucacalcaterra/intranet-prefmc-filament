@@ -6,6 +6,7 @@ namespace App\Filament\Pages;
 use App\Models\User;
 use Filament\Pages\Page;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
@@ -106,12 +107,12 @@ class Profile extends Page implements HasForms
             Section::make('Dati Ufficio')
                 ->columns(2)
                 ->schema([
-                    BelongsToSelect::make('team_id')
+                    Select::make('team_id')
                         ->label('Ufficio di Appartenenza')
                         ->relationship('area', 'name')
                         ->required()
                         ->default(''),
-                    BelongsToSelect::make('qualifica_id')
+                    Select::make('qualifica_id')
                         ->relationship('qualifica', 'name')
                         ->required()
                         ->default(''),
