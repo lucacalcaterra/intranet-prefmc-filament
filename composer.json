@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
+        "robertogallea/laravel-codicefiscale": "^1.12",
         "santigarcor/laratrust": "^7.0"
     },
     "require-dev": {

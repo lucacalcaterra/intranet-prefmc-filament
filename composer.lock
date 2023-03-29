@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "281b6085eedd8f11e88847b3f10a292a",
+    "content-hash": "fb3e21f151556cce963f7b77415bce1e",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -4577,6 +4577,65 @@
                 }
             ],
             "time": "2023-01-12T18:13:24+00:00"
+        },
+        {
+            "name": "robertogallea/laravel-codicefiscale",
+            "version": "1.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robertogallea/laravel-codicefiscale.git",
+                "reference": "35a20878290df908884673bacbe7ffcdd1e2cd61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/robertogallea/laravel-codicefiscale/zipball/35a20878290df908884673bacbe7ffcdd1e2cd61",
+                "reference": "35a20878290df908884673bacbe7ffcdd1e2cd61",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.3",
+                "illuminate/support": ">=6.0",
+                "illuminate/validation": ">=6.0",
+                "nesbot/carbon": "^2.16",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "orchestra/testbench": ">=6.0",
+                "phpunit/phpunit": ">=9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "robertogallea\\LaravelCodiceFiscale\\CodiceFiscaleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "robertogallea\\LaravelCodiceFiscale\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Roberto Gallea",
+                    "email": "write@robertogallea.com"
+                }
+            ],
+            "description": "Codice fiscale validation for php/laravel",
+            "support": {
+                "issues": "https://github.com/robertogallea/laravel-codicefiscale/issues",
+                "source": "https://github.com/robertogallea/laravel-codicefiscale/tree/1.12.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/robertogallea",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-25T08:06:14+00:00"
         },
         {
             "name": "ryangjchandler/blade-capture-directive",
