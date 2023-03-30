@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 
+use Debugbar;
 use App\Models\User;
 use Filament\Pages\Page;
 
@@ -10,8 +11,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Concerns\InteractsWithForms;
+use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
 
 class Profile extends Page implements HasForms
 {
@@ -42,16 +45,26 @@ class Profile extends Page implements HasForms
 
     public $team_id;
 
+    public $data_nascita;
+
+    public $sesso;
+
+    public $cf;
+
 
 
 
     public function mount()
     {
+        $_user= auth()->user();
         $this->form->fill([
-            'name' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'qualifica_id' => auth()->user()->qualifica->id ?? 0,
-            'team_id' => auth()->user()->area?->id,
+            'name' => $_user->name,
+            'email' => $_user->email,
+            'data_nascita' => $_user->data_nascita,
+            'sesso' => $_user->sesso,
+            'qualifica_id' => $_user->qualifica->id ?? 0,
+            'team_id' => $_user->area?->id,
+            //'cf' => CodiceFiscale::generate()
 
         ]);
     }
@@ -70,6 +83,8 @@ class Profile extends Page implements HasForms
             'email' => $this->email,
             'team_id' => $this->team_id,
             'qualifica_id' => $this->qualifica_id,
+            'data_nascita' => $this->data_nascita,
+            'sesso' => $this->sesso,
         ]);
 
         auth()->user()->update($state);
@@ -102,6 +117,12 @@ class Profile extends Page implements HasForms
                     TextInput::make('email')
                         ->label('Email')
                         ->required(),
+                    TextInput::make('data_nascita')->type('date'),
+                    Select::make('sesso')
+                    ->options([
+                        'M' => 'Maschio',
+                        'F' => 'Femmina',
+                    ]),
                 ]),
 
             Section::make('Dati Ufficio')
@@ -117,7 +138,6 @@ class Profile extends Page implements HasForms
                         ->required()
                         ->default(''),
                 ]),
-
         ];
     }
 }

@@ -9,7 +9,7 @@ class Profilo extends Model
 {
     use HasFactory;
 
-    protected $table = 'qualifiche';
+    protected $table = 'profili';
 
     /**
      * Get Utente del profilo.

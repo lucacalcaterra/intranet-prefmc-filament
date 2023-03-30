@@ -29,7 +29,9 @@ class User extends Authenticatable implements LdapAuthenticatable
         'email',
         'password',
         'team_id',
-        'qualifica_id'
+        'qualifica_id',
+        'data_nascita',
+        'sesso'
     ];
 
     /**
