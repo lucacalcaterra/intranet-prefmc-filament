@@ -20,7 +20,8 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::where('username', 'dpp1060688')->first();
         if (!$user) {
             $user = User::create([
-                'name' => 'Luca Calcaterra',
+                'name' => 'Luca',
+                'surname' => 'Calcaterra',
                 'username' => 'dpp1060688',
                 'password' => bcrypt('Password.2022')
             ]);

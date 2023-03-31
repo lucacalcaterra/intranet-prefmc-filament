@@ -52,6 +52,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('surname')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('qualifica.name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('area.name')->label('Area')->sortable()->searchable(),

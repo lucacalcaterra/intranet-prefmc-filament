@@ -47,9 +47,13 @@ class Profile extends Page implements HasForms
 
     public $data_nascita;
 
+    public $comune_nascita;
+
+    public $provincia_nascita;
+
     public $sesso;
 
-    public $cf;
+    public $codice_fiscale;
 
 
 
@@ -59,14 +63,19 @@ class Profile extends Page implements HasForms
         $_user= auth()->user();
         $this->form->fill([
             'name' => $_user->name,
+            'surname' => $_user->surname,
             'email' => $_user->email,
             'data_nascita' => $_user->data_nascita,
             'sesso' => $_user->sesso,
+            'codice_fiscale' =>$_user->codice_fiscale,
             'qualifica_id' => $_user->qualifica->id ?? 0,
             'team_id' => $_user->area?->id,
             //'cf' => CodiceFiscale::generate()
 
         ]);
+
+        //$cf=CodiceFiscale::generate($_user->name,$_user->surname,$_user->data_nascita,'TOLENTINO',$_user->sesso);
+        //Debugbar::info($cf);
     }
 
     protected function getFormModel(): string
@@ -80,10 +89,13 @@ class Profile extends Page implements HasForms
 
         $state = array_filter([
             'name' => $this->name,
+            'surname' => $this->surname,
             'email' => $this->email,
             'team_id' => $this->team_id,
             'qualifica_id' => $this->qualifica_id,
             'data_nascita' => $this->data_nascita,
+            'comune_nascita' => $this->comune_nascita,
+            'provincia_nascita' => $this->provincia_nascita,
             'sesso' => $this->sesso,
         ]);
 
@@ -113,16 +125,24 @@ class Profile extends Page implements HasForms
                 ->columns(2)
                 ->schema([
                     TextInput::make('name')
+                        ->label('Nome')
+                        ->required(),
+                    TextInput::make('surname')
+                        ->label('Cognome')
                         ->required(),
                     TextInput::make('email')
                         ->label('Email')
                         ->required(),
                     TextInput::make('data_nascita')->type('date'),
+                    TextInput::make('comune_nascita'),
+                    TextInput::make('provincia_nascita')->length(2),
+
                     Select::make('sesso')
                     ->options([
                         'M' => 'Maschio',
                         'F' => 'Femmina',
                     ]),
+                    TextInput::make('codice_fiscale')->type('text')->length(16),
                 ]),
 
             Section::make('Dati Ufficio')

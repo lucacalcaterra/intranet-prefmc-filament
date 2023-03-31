@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
             $table->string('email')->unique()->nullable();
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -26,8 +27,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             // custom
+            $table->string('comune_nascita')->nullable();
+            $table->char('provincia_nascita',2)->nullable();
             $table->date('data_nascita')->nullable();
             $table->char('sesso', 1)->nullable();
+            $table->char('codice_fiscale',16)->nullable();
         });
     }
 

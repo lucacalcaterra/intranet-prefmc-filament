@@ -5,6 +5,9 @@ namespace App\Observers;
 use Debugbar;
 use App\Models\Team;
 use App\Models\User;
+use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
+
+use function PHPUnit\Framework\isEmpty;
 
 class UserObserver
 {
@@ -25,6 +28,12 @@ class UserObserver
                 $user->detachRole('dipendente', $team->id);
             }
             $user->attachRole('dipendente', $user->team_id);
+        }
+
+        if (empty  ($user->codice_fiscale)  && (isset ($user->data_nascita) && isset($user->sesso))) {
+            $user->codice_fiscale=CodiceFiscale::generate($user->name,$user->surname,$user->data_nascita,$user->citta_nascita,$user->sesso);
+            $user->save();
+            dd($user->codice_fiscale);
         }
     }
 }

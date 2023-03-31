@@ -72,9 +72,11 @@ return [
                 'model' => App\Models\User::class,
                 'sync_passwords' => true,
                 'sync_attributes' => [
-                    'name' => 'cn',
+                    'name' => 'givenName',
+                    'surname' => 'sn',
                     'username' => 'samaccountname',
                     'email' => 'mail',
+                    'codice_fiscale' => 'co',
                 ],
                 'sync_existing' => [
                     'username' => 'samaccountname',
