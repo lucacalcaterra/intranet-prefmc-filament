@@ -7,6 +7,7 @@ use Debugbar;
 use App\Models\User;
 use Filament\Pages\Page;
 
+use Filament\Pages\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
@@ -66,6 +67,9 @@ class Profile extends Page implements HasForms
             'surname' => $_user->surname,
             'email' => $_user->email,
             'data_nascita' => $_user->data_nascita,
+            'comune_nascita' => $_user->comune_nascita,
+            'provincia_nascita' => $_user->provincia_nascita,
+
             'sesso' => $_user->sesso,
             'codice_fiscale' =>$_user->codice_fiscale,
             'qualifica_id' => $_user->qualifica->id ?? 0,
@@ -158,6 +162,13 @@ class Profile extends Page implements HasForms
                         ->required()
                         ->default(''),
                 ]),
+        ];
+    }
+
+    protected function getActions(): array
+    {
+        return [
+            Action::make('settings')->action('openSettingsModal'),
         ];
     }
 }
