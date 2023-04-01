@@ -8,11 +8,16 @@ use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Actions\Action;
 use App\Filament\Resources\UserResource\Pages;
 use Filament\Forms\Components\HasManyRepeater;
 use Filament\Forms\Components\MorphManyRepeater;
 use Filament\Forms\Components\BelongsToManyMultiSelect;
 use App\Filament\Resources\UserResource\RelationManagers;
+use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
 
 class UserResource extends Resource
 {
@@ -27,23 +32,41 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
+
         return $form
             ->schema([
+                Fieldset::make('Dati') ->schema([
+                Forms\Components\TextInput::make('username')
+                ->required()
+                ->maxLength(255),
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->disabled()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('username')
-                    ->required()
-                    ->disabled()
-                    ->maxLength(255),
-                Forms\Components\BelongsToSelect::make('team_d')
+                Forms\Components\TextInput::make('surname')
+                ->required()
+                ->maxLength(255),
+                Forms\Components\TextInput::make('data_nascita')
+                ->type('date')
+                ->required()
+                ->maxLength(255),
+                Forms\Components\TextInput::make('comune_nascita')
+                ->required()
+                ->maxLength(255),
+                Forms\Components\TextInput::make('provincia_nascita')
+                ->required()
+                ->length(2),
+                Forms\Components\TextInput::make('sesso')
+                ->required()
+                ->length(1),
+                Forms\Components\TextInput::make('codice_fiscale')
+                ->length(16),
+                Select::make('team_id')
                     ->label('Ufficio di Appartenenza')
                     ->relationship('area', 'name')
                     ->default(''),
-                Forms\Components\BelongsToSelect::make('qualificaId')
+                Select::make('qualifica_id')
                     ->relationship('qualifica', 'name')
-                    ->default(''),
+                    ->default(''),])
             ]);
     }
 
@@ -51,9 +74,12 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('surname')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('username')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('surname')->label('Cognome')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('data_nascita')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('comune_nascita')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('provincia_nascita')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('qualifica.name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('area.name')->label('Area')->sortable()->searchable(),
 

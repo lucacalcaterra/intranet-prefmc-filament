@@ -7,13 +7,11 @@ use Debugbar;
 use App\Models\User;
 use Filament\Pages\Page;
 
-use Filament\Pages\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Concerns\InteractsWithForms;
 use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
 
@@ -61,7 +59,7 @@ class Profile extends Page implements HasForms
 
     public function mount()
     {
-        $_user= auth()->user();
+        $_user = auth()->user();
         $this->form->fill([
             'name' => $_user->name,
             'surname' => $_user->surname,
@@ -71,7 +69,7 @@ class Profile extends Page implements HasForms
             'provincia_nascita' => $_user->provincia_nascita,
 
             'sesso' => $_user->sesso,
-            'codice_fiscale' =>$_user->codice_fiscale,
+            'codice_fiscale' => $_user->codice_fiscale,
             'qualifica_id' => $_user->qualifica->id ?? 0,
             'team_id' => $_user->area?->id,
             //'cf' => CodiceFiscale::generate()
@@ -92,15 +90,15 @@ class Profile extends Page implements HasForms
         $this->form->getState();
 
         $state = array_filter([
-            'name' => $this->name,
-            'surname' => $this->surname,
-            'email' => $this->email,
+            //'name' => $this->name,
+            //'surname' => $this->surname,
+            //'email' => $this->email,
             'team_id' => $this->team_id,
             'qualifica_id' => $this->qualifica_id,
-            'data_nascita' => $this->data_nascita,
-            'comune_nascita' => $this->comune_nascita,
-            'provincia_nascita' => $this->provincia_nascita,
-            'sesso' => $this->sesso,
+            //'data_nascita' => $this->data_nascita,
+            //'comune_nascita' => $this->comune_nascita,
+            //'provincia_nascita' => $this->provincia_nascita,
+            //'sesso' => $this->sesso,
         ]);
 
         auth()->user()->update($state);
@@ -130,23 +128,23 @@ class Profile extends Page implements HasForms
                 ->schema([
                     TextInput::make('name')
                         ->label('Nome')
-                        ->required(),
+                        ->required()->disabled(),
                     TextInput::make('surname')
                         ->label('Cognome')
-                        ->required(),
+                        ->required()->disabled(),
                     TextInput::make('email')
                         ->label('Email')
-                        ->required(),
-                    TextInput::make('data_nascita')->type('date'),
-                    TextInput::make('comune_nascita'),
-                    TextInput::make('provincia_nascita')->length(2),
+                        ->required()->disabled(),
+                    TextInput::make('data_nascita')->type('date')->disabled(),
+                    TextInput::make('comune_nascita')->disabled(),
+                    TextInput::make('provincia_nascita')->length(2)->disabled(),
 
                     Select::make('sesso')
-                    ->options([
-                        'M' => 'Maschio',
-                        'F' => 'Femmina',
-                    ]),
-                    TextInput::make('codice_fiscale')->type('text')->length(16),
+                        ->options([
+                            'M' => 'Maschio',
+                            'F' => 'Femmina',
+                        ])->disabled(),
+                    TextInput::make('codice_fiscale')->type('text')->length(16)->disabled()
                 ]),
 
             Section::make('Dati Ufficio')
@@ -162,13 +160,6 @@ class Profile extends Page implements HasForms
                         ->required()
                         ->default(''),
                 ]),
-        ];
-    }
-
-    protected function getActions(): array
-    {
-        return [
-            Action::make('settings')->action('openSettingsModal'),
         ];
     }
 }

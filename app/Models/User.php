@@ -8,6 +8,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 
 use LdapRecord\Laravel\Auth\HasLdapUser;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,5 +66,14 @@ class User extends Authenticatable implements LdapAuthenticatable
     public function area()
     {
         return $this->belongsTo(Team::class, 'team_id');
+    }
+
+    protected function getCodiceFiscale()
+    {
+        return "ciao";
+        // return Attribute::make(
+        //     get: fn (string $value) => ucfirst($value),
+        //     set: fn (string $value) => strtolower($value),
+        // );
     }
 }

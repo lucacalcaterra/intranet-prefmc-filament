@@ -30,10 +30,9 @@ class UserObserver
             $user->attachRole('dipendente', $user->team_id);
         }
 
-        // if (empty  ($user->codice_fiscale)  && (isset ($user->data_nascita) && isset($user->sesso))) {
-        //     $user->codice_fiscale=CodiceFiscale::generate($user->name,$user->surname,$user->data_nascita,$user->citta_nascita,$user->sesso);
-        //     $user->save();
-        //     dd($user->codice_fiscale);
-        // }
+        if (is_null($user->codice_fiscale)  && (isset($user->data_nascita) && isset($user->sesso))) {
+            $user->codice_fiscale = CodiceFiscale::generate($user->name, $user->surname, $user->data_nascita, $user->comune_nascita, $user->sesso);
+            $user->save();
+        }
     }
 }
