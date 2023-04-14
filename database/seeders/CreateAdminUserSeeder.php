@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
 class CreateAdminUserSeeder extends Seeder
@@ -20,10 +20,11 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::where('username', 'dpp1060688')->first();
         if (!$user) {
             $user = User::create([
-                'name' => 'Luca',
-                'surname' => 'Calcaterra',
-                'username' => 'dpp1060688',
-                'password' => bcrypt('Password.2022')
+                'name' => 'superadmin' ,
+                'surname' => 'superadmin',
+                'email' => env('SUPERADMIN_EMAIL'),
+                'username' => env('SUPERADMIN_USER'),
+                'password' => bcrypt(env('SUPERADMIN_PASSWORD'))
             ]);
             $user->syncRoles(['superadministrator']);
         }
