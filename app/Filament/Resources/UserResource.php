@@ -8,13 +8,14 @@ use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Pages\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\UserResource\Pages;
 use Filament\Forms\Components\HasManyRepeater;
 use Filament\Forms\Components\MorphManyRepeater;
-use Filament\Pages\Actions\Action;
+use LucaCalcaterra\FilamentItalianCities\Models\City;
 use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
 use Filament\Forms\Components\BelongsToManyMultiSelect;
 use App\Filament\Resources\UserResource\RelationManagers;
@@ -51,18 +52,22 @@ class UserResource extends Resource
                         ->type('date')
                         ->required()
                         ->maxLength(255),
-                    Forms\Components\TextInput::make('comune_nascita')
+                    Select::make('comune_nascita_name')
                         ->required()
-                        ->maxLength(255),
+                        ->options(City::all()->pluck('name'))
+                        //->getSearchResultsUsing(fn (string $search) => City::all()->pluck('name'))
+                        //->getOptionLabelUsing(fn ($record) => dd($record->name))
+                        ->searchable(),
                     Forms\Components\TextInput::make('provincia_nascita')
                         ->required()
                         ->length(2),
-                    Forms\Components\TextInput::make('sesso')
-                        ->required()
-                        ->length(1),
+                    Select::make('sesso')
+                        ->options([
+                            'M' => 'Maschio',
+                            'F' => 'Femmina',
+                        ]),
                     Forms\Components\TextInput::make('codice_fiscale')
-                        ->length(16)
-                        ,
+                        ->length(16),
 
                     Select::make('team_id')
                         ->label('Ufficio di Appartenenza')

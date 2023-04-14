@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -27,7 +27,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             // custom
-            $table->string('comune_nascita')->nullable();
+            $table->integer('comune_nascita_id')->nullable();
+            $table->string('comune_nascita_name')->nullable();
             $table->char('provincia_nascita',2)->nullable();
             $table->date('data_nascita')->nullable();
             $table->char('sesso', 1)->nullable();
