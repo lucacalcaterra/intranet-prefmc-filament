@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap any application services.W
      *
      * @return void
      */
@@ -35,5 +35,9 @@ class AppServiceProvider extends ServiceProvider
                 // ...
             ]);
         });
+
+        Filament::registerScripts([
+            'https://s3.amazonaws.com/download.dymo.com/dymo/Software/JavaScript/dymo.connect.framework.js',
+        ], true);
     }
 }
